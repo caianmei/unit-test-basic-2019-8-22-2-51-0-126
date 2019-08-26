@@ -55,13 +55,14 @@ class ExpenseServiceTest {
     	// given
     	Project project = new Project(ProjectType.UNEXPECTED_PROJECT_TYPE, "Other Name");
         // when
+    	String error = null;
     	try {
     		ExpenseService.getExpenseCodeByProjectTypeAndName(project);
 		} 		
         // then
-    	catch (UnexpectedProjectTypeException e) {			
-			assertEquals("You enter invalid project type", e.getMessage());
+    	catch (UnexpectedProjectTypeException e) {
+    		error = e.getMessage();			
 		}
-    	
+    	assertEquals("You enter invalid project type", error);
     }
 }
